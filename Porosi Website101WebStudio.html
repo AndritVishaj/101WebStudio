@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porosi Website - 101WebStudio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --danger: #f72585;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-message {
+            background-color: var(--success);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .error-message {
+            background-color: var(--danger);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-globe"></i> 101WebStudio
+            </div>
+            <h1>Porositni Website-in Tuaj</h1>
+            <p>Plotësoni formularin për të na dërguar kërkesën tuaj</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="websiteRequestForm">
+                <div class="form-group">
+                    <label for="emri">Emri*</label>
+                    <input type="text" id="emri" name="emri" placeholder="Shkruani emrin tuaj" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" placeholder="shkruani@emailin.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="biznesi">Emri i Biznesit*</label>
+                    <input type="text" id="biznesi" name="biznesi" placeholder="Emri i biznesit tuaj" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lloji">Lloji i Biznesit*</label>
+                    <select id="lloji" name="lloji" required>
+                        <option value="" disabled selected>Zgjidhni llojin e biznesit</option>
+                        <option value="Restorant/Kafe">Restorant/Kafe</option>
+                        <option value="Hotel/Turizëm">Hotel/Turizëm</option>
+                        <option value="Tregti me pakicë">Tregti me pakicë</option>
+                        <option value="Shërbime Profesionale">Shërbime Profesionale</option>
+                        <option value="Ndërtim/Pronë">Ndërtim/Pronë</option>
+                        <option value="Shëndetësi/Stomatologji">Shëndetësi/Stomatologji</option>
+                        <option value="Edukim/Trajnim">Edukim/Trajnim</option>
+                        <option value="Fitness/Wellness">Fitness/Wellness</option>
+                        <option value="Art/Design">Art/Design</option>
+                        <option value="Teknologji/IT">Teknologji/IT</option>
+                        <option value="Tjetër">Tjetër</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pershkrimi">Përshkrimi i website-it që dëshironi*</label>
+                    <textarea id="pershkrimi" name="pershkrimi" placeholder="Përshkruani sa më hollësisht qëllimin e website-it, veçoritë e dëshiruara, preferencat e dizajnit, etj." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Dërgo Porosinë
+                </button>
+            </form>
+            
+            <div id="successMessage" class="success-message">
+                <h3>Faleminderit për porosinë tuaj! <i class="fas fa-check-circle"></i></h3>
+                <p>Ne do të shqyrtojmë kërkesën tuaj dhe do t'ju kontaktojmë brenda 24 orëve.</p>
+            </div>
+            
+            <div id="errorMessage" class="error-message">
+                <i class="fas fa-exclamation-circle"></i> Ndodhi një gabim gjatë dërgimit. Ju lutem provoni përsëri më vonë.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('websiteRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Po dërgohet...';
+            submitBtn.disabled = true;
+            
+            // Merr të dhënat nga forma
+            const formData = {
+                emri: document.getElementById('emri').value,
+                email: document.getElementById('email').value,
+                biznesi: document.getElementById('biznesi').value,
+                lloji: document.getElementById('lloji').value,
+                pershkrimi: document.getElementById('pershkrimi').value,
+                data: new Date().toLocaleString('sq-AL')
+            };
+            
+            // Krijo mesazhin e email-it
+            const subject = `Porosi e re website nga ${formData.biznesi}`;
+            const body = `
+Emri: ${formData.emri}
+Email: ${formData.email}
+Biznesi: ${formData.biznesi}
+Lloji i Biznesit: ${formData.lloji}
+
+Përshkrimi i Website-it:
+${formData.pershkrimi}
+
+Data: ${formData.data}
+            `;
+            
+            // Dërgo email-in duke përdorur FormSubmit.co (alternativë pa server)
+            fetch('https://formsubmit.co/ajax/101WebStudio@gmail.com', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.emri,
+                    email: formData.email,
+                    biznesi: formData.biznesi,
+                    lloji: formData.lloji,
+                    mesazhi: formData.pershkrimi,
+                    _subject: subject
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('errorMessage').style.display = 'none';
+                document.getElementById('websiteRequestForm').reset();
+            })
+            .catch(error => {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Dërgo Porosinë';
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
