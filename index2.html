@@ -231,69 +231,51 @@
     </div>
 
     <script>
-        document.getElementById('websiteRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Po dërgohet...';
-            submitBtn.disabled = true;
-            
-            // Merr të dhënat nga forma
-            const formData = {
-                emri: document.getElementById('emri').value,
-                email: document.getElementById('email').value,
-                biznesi: document.getElementById('biznesi').value,
-                lloji: document.getElementById('lloji').value,
-                pershkrimi: document.getElementById('pershkrimi').value,
-                data: new Date().toLocaleString('sq-AL')
-            };
-            
-            // Krijo mesazhin e email-it
-            const subject = `Porosi e re website nga ${formData.biznesi}`;
-            const body = `
-Emri: ${formData.emri}
-Email: ${formData.email}
-Biznesi: ${formData.biznesi}
-Lloji i Biznesit: ${formData.lloji}
+       <script>
+  document.getElementById('websiteRequestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-Përshkrimi i Website-it:
-${formData.pershkrimi}
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Po dërgohet...';
+    submitBtn.disabled = true;
 
-Data: ${formData.data}
-            `;
-            
-            // Dërgo email-in duke përdorur FormSubmit.co (alternativë pa server)
-            fetch('https://formsubmit.co/ajax/101WebStudio@gmail.com', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: formData.emri,
-                    email: formData.email,
-                    biznesi: formData.biznesi,
-                    lloji: formData.lloji,
-                    mesazhi: formData.pershkrimi,
-                    _subject: subject
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('errorMessage').style.display = 'none';
-                document.getElementById('websiteRequestForm').reset();
-            })
-            .catch(error => {
-                document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('successMessage').style.display = 'none';
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Dërgo Porosinë';
-                submitBtn.disabled = false;
-            });
-        });
-    </script>
+    const formData = {
+      emri: document.getElementById('emri').value,
+      email: document.getElementById('email').value,
+      biznesi: document.getElementById('biznesi').value,
+      lloji: document.getElementById('lloji').value,
+      pershkrimi: document.getElementById('pershkrimi').value
+    };
+
+    fetch("URL_E_WEB_APP_IT", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.result === "success") {
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'none';
+        document.getElementById('websiteRequestForm').reset();
+      } else {
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('successMessage').style.display = 'none';
+      }
+    })
+    .catch(err => {
+      document.getElementById('errorMessage').style.display = 'block';
+      document.getElementById('successMessage').style.display = 'none';
+      console.error(err);
+    })
+    .finally(() => {
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Dërgo Porosinë';
+      submitBtn.disabled = false;
+    });
+  });
+</script>
+
 </body>
 </html>
