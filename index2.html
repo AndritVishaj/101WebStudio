@@ -231,63 +231,79 @@
     </div>
 
     <script>
-      document.getElementById('websiteRequestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Po dërgohet...';
-            submitBtn.disabled = true;
-            
-            // Merr të dhënat nga forma
-            const formData = {
-                emri: document.getElementById('emri').value,
-                email: document.getElementById('email').value,
-                biznesi: document.getElementById('biznesi').value,
-                lloji: document.getElementById('lloji').value,
-                pershkrimi: document.getElementById('pershkrimi').value,
-                data: new Date().toLocaleString('sq-AL')
-            };
-            
-            // Krijo mesazhin e email-it
-            const subject = Porosi e re website nga ${formData.biznesi};
-            const body = 
-            Emri: ${formData.emri}
-            Email: ${formData.email}
-            Biznesi: ${formData.biznesi}
-            Lloji i Biznesit: ${formData.lloji}
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('websiteRequestForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const submitBtn = form.querySelector('.submit-btn');
 
-            Përshkrimi i Website-it:
-           ${formData.pershkrimi}
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-            Data: ${formData.data}
-            ;
-            
-            // Dërgo email-in duke përdorur FormSubmit.co (alternativë pa server)
-            fetch('https://formsubmit.co/ajax/101WebStudio@gmail.com', {
-    method: 'POST',
-    headers: { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-        name: formData.emri,
-        email: formData.email,
-        message: `
-Emri: ${formData.emri}
-Email: ${formData.email}
-Biznesi: ${formData.biznesi}
-Lloji i Biznesit: ${formData.lloji}
+        // Disable button and show spinner
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Po dërgohet...';
 
-Përshkrimi i Website-it:
-${formData.pershkrimi}
+        // Get form values
+        const emri = document.getElementById('emri').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const biznesi = document.getElementById('biznesi').value.trim();
+        const lloji = document.getElementById('lloji').value;
+        const pershkrimi = document.getElementById('pershkrimi').value.trim();
+        const data = new Date().toLocaleString('sq-AL');
 
-Data: ${formData.data}
-        `,
-        _subject: subject
-    })
-})
+        // Prepare subject and body
+        const subject = `Porosi e re website nga ${biznesi}`;
+        const messageBody = `
+Emri: ${emri}
+Email: ${email}
+Biznesi: ${biznesi}
+Lloji i Biznesit: ${lloji}
 
+Përshkrimi:
+${pershkrimi}
+
+Data: ${data}
+        `;
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/101WebStudio@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: emri,
+                    email: email,
+                    biznesi: biznesi,
+                    lloji: lloji,
+                    mesazhi: messageBody,
+                    _subject: subject
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.success === 'true') {
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                form.reset();
+            } else {
+                throw new Error(data.message || 'Dërgimi dështoi');
+            }
+        } catch (error) {
+            console.error('Gabim:', error);
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Dërgo Porosinë';
+        }
+    });
+});
 </script>
+
 
 </body>
 </html>
