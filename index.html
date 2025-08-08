@@ -400,6 +400,147 @@
                 padding: 20px;
             }
         }
+          /* Portfolio Carousel Styles */
+    .portfolio-carousel {
+        padding: 100px 0;
+        background-color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .carousel-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 40px auto 0;
+        overflow: hidden;
+    }
+    
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        will-change: transform;
+    }
+    
+    .carousel-card {
+        min-width: 300px;
+        margin: 0 15px;
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 0 0 calc(33.333% - 30px);
+    }
+    
+    .carousel-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-image {
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .carousel-card:hover .card-image img {
+        transform: scale(1.05);
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+    
+    .card-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--dark-blue);
+    }
+    
+    .card-content p {
+        color: var(--text-color);
+        font-size: 0.95rem;
+    }
+    
+    .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--white);
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .carousel-nav:hover {
+        background: var(--primary-color);
+        color: var(--white);
+    }
+    
+    .carousel-nav.prev {
+        left: 20px;
+    }
+    
+    .carousel-nav.next {
+        right: 20px;
+    }
+    
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    
+    .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ddd;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .carousel-card {
+            flex: 0 0 calc(50% - 30px);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .carousel-card {
+            flex: 0 0 calc(100% - 30px);
+        }
+        
+        .carousel-nav {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -499,6 +640,78 @@
             </div>
         </div>
     </section>
+
+     <!-- Add this section right after the services section in your HTML -->
+<section class="portfolio-carousel">
+    <div class="container">
+        <div class="section-title">
+            <h2 data-key="portfolio.title">Our Portfolio</h2>
+            <p data-key="portfolio.subtitle">Explore our recent projects that showcase our expertise and creativity</p>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Lamore Parfume -->
+                <div class="carousel-card" onclick="window.open('https://101webstudio.github.io/Lamore_Parfume/', '_blank')">
+                    <div class="card-image">
+                    <img src="images/lamur.png" alt="Lamore Parfume" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>Lamore Parfume</h3>
+                        <p>Elegant e-commerce platform for luxury fragrances</p>
+                    </div>
+                </div>
+                
+                <!-- SNEPI -->
+                <div class="carousel-card" onclick="window.open('https://101webstudio.github.io/SNEPI/', '_blank')">
+                    <div class="card-image">
+                        <img src="images/snepi.png" alt="SNEPI Project" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>SNEPI</h3>
+                        <p>Corporate website with interactive elements</p>
+                    </div>
+                </div>
+                
+                <!-- 101WebStudio -->
+                <div class="carousel-card" onclick="window.open('https://andritvishaj.github.io/101WebStudio/', '_blank')">
+                    <div class="card-image">
+                        <img src="images/Screenshot 2025-07-30 235944.png" alt="101WebStudio" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>101WebStudio</h3>
+                        <p>Our agency's portfolio website</p>
+                    </div>
+                </div>
+                
+                <!-- AgiPlastKS -->
+                <div class="carousel-card" onclick="window.open('https://andritvishaj.github.io/AgiPlastKS/', '_blank')">
+                    <div class="card-image">
+                        <img src="images/agipplasti.png" alt="AgiPlastKS" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3>AgiPlastKS</h3>
+                        <p>Industrial company website</p>
+                    </div>
+                </div>
+                
+                <!-- Add more projects as needed -->
+            </div>
+            
+            <button class="carousel-nav prev" aria-label="Previous project">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav next" aria-label="Next project">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-dots">
+                <!-- Dots will be added by JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -713,6 +926,107 @@
 
         // Initialize with default language
         changeLanguage(currentLang);
+
+         // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.carousel-track');
+        const cards = document.querySelectorAll('.carousel-card');
+        const prevBtn = document.querySelector('.carousel-nav.prev');
+        const nextBtn = document.querySelector('.carousel-nav.next');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        
+        let cardWidth = cards[0].offsetWidth + 30; // card width + margin
+        let currentPosition = 0;
+        let currentIndex = 0;
+        
+        // Create dots
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        // Update carousel position
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentPosition}px)`;
+            
+            // Update active dot
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            currentIndex = index;
+            currentPosition = cardWidth * index;
+            updateCarousel();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                currentPosition += cardWidth;
+            } else {
+                currentIndex = 0;
+                currentPosition = 0;
+            }
+            updateCarousel();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                currentPosition -= cardWidth;
+            } else {
+                currentIndex = cards.length - 1;
+                currentPosition = cardWidth * currentIndex;
+            }
+            updateCarousel();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Auto-advance carousel (optional)
+        let autoSlide = setInterval(nextSlide, 5000);
+        
+        // Pause auto-slide on hover
+        const carousel = document.querySelector('.carousel-container');
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            autoSlide = setInterval(nextSlide, 5000);
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            cardWidth = cards[0].offsetWidth + 30;
+            currentPosition = cardWidth * currentIndex;
+            updateCarousel();
+        });
+        
+        // Add translations for the portfolio section
+        if (translations) {
+            translations.en["portfolio.title"] = "Our Portfolio";
+            translations.en["portfolio.subtitle"] = "Explore our recent projects that showcase our expertise and creativity";
+            
+            translations.sq["portfolio.title"] = "Portofoli Ynë";
+            translations.sq["portfolio.subtitle"] = "Eksploroni projektet tona të fundit që tregojnë ekspertizën dhe kreativitetin tonë";
+        }
+    });
     </script>
 </body>
 </html>
+
