@@ -30,7 +30,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 700px;
+      max-width: 1200px;
       margin: 40px auto;
       background: white;
       border-radius: 15px;
@@ -126,9 +126,155 @@
       margin-top: 20px;
       display: none;
     }
+    
+    /* Pricing Section Styles */
+    .pricing-section {
+      padding: 50px 30px;
+      background-color: #f9fafc;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: var(--secondary);
+      font-size: 2rem;
+    }
+    .pricing-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 50px;
+      flex-wrap: nowrap;
+    }
+    .pricing-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      text-align: center;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+    }
+    .pricing-card.popular {
+      border: 2px solid var(--primary);
+      position: relative;
+    }
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .price-amount {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 15px 0;
+    }
+    .price-interval {
+      color: #6c757d;
+      margin-bottom: 20px;
+    }
+    .pricing-features {
+      list-style: none;
+      margin: 20px 0;
+      text-align: left;
+      flex-grow: 1;
+    }
+    .pricing-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+    }
+    .pricing-features li i {
+      color: var(--success);
+      margin-right: 10px;
+    }
+    .price-btn {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s;
+      margin-top: auto;
+    }
+    .price-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+    
+    /* Budget Slider */
+    .budget-section {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+    }
+    .slider-container {
+      margin: 30px 0;
+    }
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      outline: none;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--secondary);
+      cursor: pointer;
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+    .slider-value {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-top: 15px;
+    }
+    .budget-note {
+      text-align: center;
+      color: #6c757d;
+      font-style: italic;
+      margin-top: 10px;
+    }
+    
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+    @media (max-width: 992px) {
+      .pricing-container {
+        flex-wrap: wrap;
+      }
+      .pricing-card {
+        min-width: 250px;
+      }
     }
     @media (max-width: 768px) {
       .container {
@@ -140,6 +286,14 @@
       .form-container {
         padding: 20px;
       }
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .pricing-card {
+        width: 100%;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -150,8 +304,80 @@
       <h1>Porositni Website-in Tuaj</h1>
       <p>Plotësoni formularin për të na dërguar kërkesën tuaj</p>
     </div>
-    <div class="form-container">
+    
+    <!-- Pricing Section -->
+    <div class="pricing-section">
+      <h2 class="section-title">Çmimet Tona</h2>
+      <div class="pricing-container">
+        <div class="pricing-card">
+          <h3>Paketa Bazë</h3>
+          <div class="price-amount">€150-€500</div>
+          <div class="price-interval">Një pagesë unike</div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Website 1-5 faqe</li>
+            <li><i class="fas fa-check"></i> Dizajn responsive</li>
+            <li><i class="fas fa-check"></i> Optimizim bazë për SEO</li>
+            <li><i class="fas fa-check"></i> Formular kontakti</li>
+            <li><i class="fas fa-check"></i> Integrim social media</li>
+            <li><i class="fas fa-check"></i> Hosting & domain për 1 vit</li>
+          </ul>
+          <button class="price-btn" onclick="scrollToForm()">Zgjidhni Këtë</button>
+        </div>
+        
+        <div class="pricing-card popular">
+          <div class="popular-tag">MË E POPULLARIZUAR</div>
+          <h3>Paketa Standard</h3>
+          <div class="price-amount">€500-€1000</div>
+          <div class="price-interval">Një pagesë unike</div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Website 5-10 faqe</li>
+            <li><i class="fas fa-check"></i> Dizajn custom responsive</li>
+            <li><i class="fas fa-check"></i> Optimizim i avancuar për SEO</li>
+            <li><i class="fas fa-check"></i> Sistem administrimi</li>
+            <li><i class="fas fa-check"></i> Blog integruar</li>
+            <li><i class="fas fa-check"></i> Galeri fotosh/Video</li>
+            <li><i class="fas fa-check"></i> Hosting & domain për 1 vit</li>
+            <li><i class="fas fa-check"></i> Mbështetje 6 muaj</li>
+          </ul>
+          <button class="price-btn" onclick="scrollToForm()">Zgjidhni Këtë</button>
+        </div>
+        
+        <div class="pricing-card">
+          <h3>Paketa Premium</h3>
+          <div class="price-amount">€1000-€1500</div>
+          <div class="price-interval">Një pagesë unike</div>
+          <ul class="pricing-features">
+            <li><i class="fas fa-check"></i> Website me faqe të pakufizuara</li>
+            <li><i class="fas fa-check"></i> Dizajn unik dhe personalizuar</li>
+            <li><i class="fas fa-check"></i> E-commerce me pagesa online</li>
+            <li><i class="fas fa-check"></i> Sistem i avancuar administrimi</li>
+            <li><i class="fas fa-check"></i> Blog profesional</li>
+            <li><i class="fas fa-check"></i> Integrime me palë të treta</li>
+            <li><i class="fas fa-check"></i> Hosting premium & domain për 1 vit</li>
+            <li><i class="fas fa-check"></i> Mbështetje 12 muaj</li>
+            <li><i class="fas fa-check"></i> SSL certifikatë</li>
+          </ul>
+          <button class="price-btn" onclick="scrollToForm()">Zgjidhni Këtë</button>
+        </div>
+      </div>
+      
+      <div class="budget-section">
+        <h3 style="text-align: center;">Keni një buxhet specifik?</h3>
+        <p style="text-align: center; margin-top: 10px;">Shfletoni opsionet tona bazuar në buxhetin tuaj</p>
+        
+        <div class="slider-container">
+          <input type="range" min="150" max="10000" step="50" value="1500" class="slider" id="budgetSlider">
+          <div class="slider-value">€<span id="sliderValue">1500</span></div>
+          <p class="budget-note">Ne mund të krijojmë zgjidhje të personalizuara për çdo buxhet deri në €10,000</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-container" id="contactForm">
       <form action="https://formsubmit.co/101WebStudio@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Porosi e re nga website!">
+        <input type="hidden" name="_template" value="table">
+        
         <div class="form-group">
           <label for="emri">Emri*</label>
           <input type="text" id="emri" name="Emri" placeholder="Shkruani emrin tuaj" required>
@@ -182,6 +408,10 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="buxheti">Buxheti i Parashikuar (€)</label>
+          <input type="number" id="buxheti" name="Buxheti" min="150" max="10000" placeholder="Shkruani buxhetin tuaj" value="1500">
+        </div>
+        <div class="form-group">
           <label for="pershkrimi">Përshkrimi i website-it që dëshironi*</label>
           <textarea id="pershkrimi" name="Përshkrimi i Website-it" placeholder="Përshkruani sa më hollësisht qëllimin e website-it, veçoritë e dëshiruara, preferencat e dizajnit, etj." required></textarea>
         </div>
@@ -191,5 +421,34 @@
       </form>
     </div>
   </div>
+
+  <script>
+    // Budget slider functionality
+    const budgetSlider = document.getElementById('budgetSlider');
+    const sliderValue = document.getElementById('sliderValue');
+    const budgetInput = document.getElementById('buxheti');
+    
+    budgetSlider.addEventListener('input', function() {
+      sliderValue.textContent = this.value;
+      budgetInput.value = this.value;
+    });
+    
+    budgetInput.addEventListener('input', function() {
+      if (this.value >= 150 && this.value <= 10000) {
+        budgetSlider.value = this.value;
+        sliderValue.textContent = this.value;
+      }
+    });
+    
+    // Set initial value for budget input
+    budgetInput.value = budgetSlider.value;
+    
+    // Function to scroll to the form
+    function scrollToForm() {
+      document.getElementById('contactForm').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }
+  </script>
 </body>
 </html>
