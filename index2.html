@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Porosi Website - 101WebStudio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-  <link rel="icon" type="image/jpg" href="image.png">
   <style>
     :root {
-      --primary: #4361ee;
-      --secondary: #3a0ca3;
-      --accent: #4895ef;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --success: #4cc9f0;
-      --danger: #f72585;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #374151;
+      --accent: #3b82f6;
+      --light: #f9fafb;
+      --dark: #111827;
+      --success: #10b981;
+      --danger: #ef4444;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
     }
     * {
       box-sizing: border-box;
@@ -22,9 +24,9 @@
       padding: 0;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      background: #f9fafb;
       color: var(--dark);
       min-height: 100vh;
       padding: 20px;
@@ -33,27 +35,31 @@
       max-width: 1200px;
       margin: 40px auto;
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
     .header {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
       color: white;
       padding: 30px;
       text-align: center;
     }
     .logo {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 10px;
+      font-weight: 700;
     }
     .header h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 10px;
+      font-weight: 600;
     }
     .header p {
       opacity: 0.9;
       font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .form-container {
       padding: 30px;
@@ -65,102 +71,91 @@
       display: block;
       margin-bottom: 8px;
       font-weight: 600;
-      color: var(--dark);
+      color: var(--secondary);
+      font-size: 15px;
     }
     input, select, textarea {
       width: 100%;
       padding: 12px 15px;
-      border: 2px solid #e9ecef;
+      border: 1px solid #d1d5db;
       border-radius: 8px;
       font-size: 16px;
-      transition: all 0.3s;
+      transition: all 0.2s;
+      background: white;
     }
     input:focus, select:focus, textarea:focus {
       border-color: var(--accent);
       outline: none;
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
     }
     textarea {
       min-height: 150px;
       resize: vertical;
     }
     .submit-btn {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      background: var(--primary);
       color: white;
       border: none;
       padding: 15px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
-      transition: all 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
     }
     .submit-btn:hover {
-      background: linear-gradient(to right, var(--secondary), var(--primary));
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    .success-message {
-      background-color: var(--success);
-      color: white;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 20px;
-      display: none;
-      animation: fadeIn 0.5s;
-    }
-    .error-message {
-      background-color: var(--danger);
-      color: white;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 20px;
-      display: none;
+      background: var(--primary-dark);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     /* Pricing Section Styles */
     .pricing-section {
-      padding: 50px 30px;
-      background-color: #f9fafc;
-      border-bottom: 1px solid #eaeaea;
+      padding: 40px 30px;
+      background-color: var(--light);
+      border-bottom: 1px solid #e5e7eb;
     }
     .section-title {
       text-align: center;
       margin-bottom: 40px;
       color: var(--secondary);
-      font-size: 2rem;
+      font-size: 1.8rem;
+      font-weight: 600;
     }
     .pricing-container {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-bottom: 50px;
-      flex-wrap: nowrap;
+      gap: 25px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
     }
     .pricing-card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
       padding: 30px;
       flex: 1;
       min-width: 280px;
       max-width: 350px;
       text-align: center;
-      transition: transform 0.3s;
+      transition: all 0.2s;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
     }
     .pricing-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .pricing-card.selected {
+      border: 2px solid var(--primary);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
     }
     .pricing-card.popular {
       border: 2px solid var(--primary);
@@ -176,17 +171,19 @@
       padding: 5px 15px;
       border-radius: 20px;
       font-size: 0.8rem;
-      font-weight: bold;
+      font-weight: 600;
+      z-index: 1;
     }
     .price-amount {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      color: var(--secondary);
+      color: var(--primary);
       margin: 15px 0;
     }
     .price-interval {
-      color: #6c757d;
+      color: var(--gray);
       margin-bottom: 20px;
+      font-size: 0.95rem;
     }
     .pricing-features {
       list-style: none;
@@ -195,17 +192,18 @@
       flex-grow: 1;
     }
     .pricing-features li {
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 10px 0;
+      border-bottom: 1px solid #f3f4f6;
       display: flex;
       align-items: center;
     }
     .pricing-features li i {
       color: var(--success);
       margin-right: 10px;
+      font-size: 14px;
     }
     .price-btn {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      background: var(--primary);
       color: white;
       border: none;
       padding: 12px 25px;
@@ -213,61 +211,81 @@
       font-weight: 600;
       cursor: pointer;
       width: 100%;
-      transition: all 0.3s;
+      transition: all 0.2s;
       margin-top: auto;
     }
     .price-btn:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
+      background: var(--primary-dark);
     }
     
-    /* Budget Slider */
-    .budget-section {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    /* Budget Options */
+    .budget-options {
+      display: none;
       margin-top: 30px;
+      padding: 25px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.3s;
+      border: 1px solid #e5e7eb;
     }
-    .slider-container {
-      margin: 30px 0;
-    }
-    .slider {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 10px;
-      border-radius: 5px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      outline: none;
-    }
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background: var(--secondary);
-      cursor: pointer;
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-    }
-    .slider-value {
+    .budget-options h3 {
       text-align: center;
-      font-size: 1.5rem;
-      font-weight: 700;
+      margin-bottom: 20px;
       color: var(--secondary);
-      margin-top: 15px;
+      font-size: 1.3rem;
     }
-    .budget-note {
-      text-align: center;
-      color: #6c757d;
-      font-style: italic;
-      margin-top: 10px;
+    .budget-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .budget-btn {
+      padding: 12px 20px;
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 120px;
+      color: var(--secondary);
+    }
+    .budget-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .budget-btn.selected {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
     }
     
+    /* Selected Package Indicator */
+    .selected-package {
+      text-align: center;
+      margin-top: 25px;
+      padding: 15px;
+      background: rgba(37, 99, 235, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid var(--primary);
+      display: none;
+      animation: fadeIn 0.3s;
+      color: var(--secondary);
+    }
+    .selected-package span {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+    
+    /* Responsive Design */
     @media (max-width: 992px) {
       .pricing-container {
         flex-wrap: wrap;
@@ -281,10 +299,13 @@
         margin: 20px auto;
       }
       .header {
-        padding: 20px;
+        padding: 25px 20px;
       }
       .form-container {
-        padding: 20px;
+        padding: 25px 20px;
+      }
+      .pricing-section {
+        padding: 30px 20px;
       }
       .pricing-container {
         flex-direction: column;
@@ -294,22 +315,28 @@
         width: 100%;
         max-width: 100%;
       }
+      .budget-buttons {
+        flex-direction: column;
+      }
+      .budget-btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <div class="logo"><i class="fas fa-globe"></i> 101WebStudio</div>
+      <div class="logo">101WebStudio</div>
       <h1>Porositni Website-in Tuaj</h1>
-      <p>Plotësoni formularin për të na dërguar kërkesën tuaj</p>
+      <p>Plotësoni formularin e mëposhtëm për të na dërguar kërkesën tuaj dhe për të filluar projektin tuaj</p>
     </div>
     
     <!-- Pricing Section -->
     <div class="pricing-section">
-      <h2 class="section-title">Çmimet Tona</h2>
+      <h2 class="section-title">Paketat Tona</h2>
       <div class="pricing-container">
-        <div class="pricing-card">
+        <div class="pricing-card" id="basicPackage">
           <h3>Paketa Bazë</h3>
           <div class="price-amount">€150-€500</div>
           <div class="price-interval">Një pagesë unike</div>
@@ -321,10 +348,10 @@
             <li><i class="fas fa-check"></i> Integrim social media</li>
             <li><i class="fas fa-check"></i> Hosting & domain për 1 vit</li>
           </ul>
-          <button class="price-btn" onclick="scrollToForm()">Zgjidhni Këtë</button>
+          <button class="price-btn" onclick="selectPackage('basic')">Zgjidhni Këtë Paketë</button>
         </div>
         
-        <div class="pricing-card popular">
+        <div class="pricing-card popular" id="standardPackage">
           <div class="popular-tag">MË E POPULLARIZUAR</div>
           <h3>Paketa Standard</h3>
           <div class="price-amount">€500-€1000</div>
@@ -339,10 +366,10 @@
             <li><i class="fas fa-check"></i> Hosting & domain për 1 vit</li>
             <li><i class="fas fa-check"></i> Mbështetje 6 muaj</li>
           </ul>
-          <button class="price-btn" onclick="scrollToForm()">Zgjidhni Këtë</button>
+          <button class="price-btn" onclick="selectPackage('standard')">Zgjidhni Këtë Paketë</button>
         </div>
         
-        <div class="pricing-card">
+        <div class="pricing-card" id="premiumPackage">
           <h3>Paketa Premium</h3>
           <div class="price-amount">€1000-€1500</div>
           <div class="price-interval">Një pagesë unike</div>
@@ -357,19 +384,42 @@
             <li><i class="fas fa-check"></i> Mbështetje 12 muaj</li>
             <li><i class="fas fa-check"></i> SSL certifikatë</li>
           </ul>
-          <button class="price-btn" onclick="scrollToForm()">Zgjidhni Këtë</button>
+          <button class="price-btn" onclick="selectPackage('premium')">Zgjidhni Këtë Paketë</button>
         </div>
       </div>
       
-      <div class="budget-section">
-        <h3 style="text-align: center;">Keni një buxhet specifik?</h3>
-        <p style="text-align: center; margin-top: 10px;">Shfletoni opsionet tona bazuar në buxhetin tuaj</p>
-        
-        <div class="slider-container">
-          <input type="range" min="150" max="10000" step="50" value="1500" class="slider" id="budgetSlider">
-          <div class="slider-value">€<span id="sliderValue">1500</span></div>
-          <p class="budget-note">Ne mund të krijojmë zgjidhje të personalizuara për çdo buxhet deri në €10,000</p>
+      <!-- Budget Options for Basic Package -->
+      <div class="budget-options" id="basicBudgetOptions">
+        <h3>Zgjidhni Buxhetin për Paketën Bazë</h3>
+        <div class="budget-buttons">
+          <button class="budget-btn" onclick="selectBudget(150, 'basic')">€150</button>
+          <button class="budget-btn" onclick="selectBudget(325, 'basic')">€325</button>
+          <button class="budget-btn" onclick="selectBudget(500, 'basic')">€500</button>
         </div>
+      </div>
+      
+      <!-- Budget Options for Standard Package -->
+      <div class="budget-options" id="standardBudgetOptions">
+        <h3>Zgjidhni Buxhetin për Paketën Standard</h3>
+        <div class="budget-buttons">
+          <button class="budget-btn" onclick="selectBudget(500, 'standard')">€500</button>
+          <button class="budget-btn" onclick="selectBudget(750, 'standard')">€750</button>
+          <button class="budget-btn" onclick="selectBudget(1000, 'standard')">€1000</button>
+        </div>
+      </div>
+      
+      <!-- Budget Options for Premium Package -->
+      <div class="budget-options" id="premiumBudgetOptions">
+        <h3>Zgjidhni Buxhetin për Paketën Premium</h3>
+        <div class="budget-buttons">
+          <button class="budget-btn" onclick="selectBudget(1000, 'premium')">€1000</button>
+          <button class="budget-btn" onclick="selectBudget(1250, 'premium')">€1250</button>
+          <button class="budget-btn" onclick="selectBudget(1500, 'premium')">€1500</button>
+        </div>
+      </div>
+      
+      <div class="selected-package" id="selectedPackage">
+        <i class="fas fa-check-circle"></i> Keni zgjedhur <span id="packageName">Paketa Standard</span> me buxhet të parashikuar prej <span id="packagePrice">750</span>€
       </div>
     </div>
     
@@ -377,6 +427,7 @@
       <form action="https://formsubmit.co/101WebStudio@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Porosi e re nga website!">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="Selected Package" id="selectedPackageInput" value="">
         
         <div class="form-group">
           <label for="emri">Emri*</label>
@@ -408,8 +459,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="buxheti">Buxheti i Parashikuar (€)</label>
-          <input type="number" id="buxheti" name="Buxheti" min="150" max="10000" placeholder="Shkruani buxhetin tuaj" value="1500">
+          <label for="buxheti">Buxheti i Parashikuar (€)*</label>
+          <input type="number" id="buxheti" name="Buxheti" min="150" max="10000" placeholder="Shkruani buxhetin tuaj" required>
         </div>
         <div class="form-group">
           <label for="pershkrimi">Përshkrimi i website-it që dëshironi*</label>
@@ -423,31 +474,76 @@
   </div>
 
   <script>
-    // Budget slider functionality
-    const budgetSlider = document.getElementById('budgetSlider');
-    const sliderValue = document.getElementById('sliderValue');
-    const budgetInput = document.getElementById('buxheti');
+    // Package selection functionality
+    let selectedPackage = '';
     
-    budgetSlider.addEventListener('input', function() {
-      sliderValue.textContent = this.value;
-      budgetInput.value = this.value;
-    });
-    
-    budgetInput.addEventListener('input', function() {
-      if (this.value >= 150 && this.value <= 10000) {
-        budgetSlider.value = this.value;
-        sliderValue.textContent = this.value;
-      }
-    });
-    
-    // Set initial value for budget input
-    budgetInput.value = budgetSlider.value;
-    
-    // Function to scroll to the form
-    function scrollToForm() {
-      document.getElementById('contactForm').scrollIntoView({ 
-        behavior: 'smooth' 
+    function selectPackage(packageType) {
+      // Remove selected class from all packages
+      document.getElementById('basicPackage').classList.remove('selected');
+      document.getElementById('standardPackage').classList.remove('selected');
+      document.getElementById('premiumPackage').classList.remove('selected');
+      
+      // Add selected class to the chosen package
+      document.getElementById(packageType + 'Package').classList.add('selected');
+      
+      // Hide all budget options
+      document.getElementById('basicBudgetOptions').style.display = 'none';
+      document.getElementById('standardBudgetOptions').style.display = 'none';
+      document.getElementById('premiumBudgetOptions').style.display = 'none';
+      
+      // Show budget options for selected package
+      document.getElementById(packageType + 'BudgetOptions').style.display = 'block';
+      
+      // Update selected package
+      selectedPackage = packageType;
+      
+      // Update the hidden input field
+      document.getElementById('selectedPackageInput').value = getPackageName(packageType);
+      
+      // Show selected package indicator
+      const selectedPackageElement = document.getElementById('selectedPackage');
+      document.getElementById('packageName').textContent = getPackageName(packageType);
+      selectedPackageElement.style.display = 'block';
+      
+      // Scroll to budget options
+      document.getElementById(packageType + 'BudgetOptions').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
       });
+    }
+    
+    function selectBudget(price, packageType) {
+      // Remove selected class from all budget buttons
+      const budgetButtons = document.querySelectorAll('.budget-btn');
+      budgetButtons.forEach(btn => btn.classList.remove('selected'));
+      
+      // Add selected class to clicked button
+      event.target.classList.add('selected');
+      
+      // Update budget value in the form
+      document.getElementById('buxheti').value = price;
+      
+      // Update selected package indicator
+      document.getElementById('packagePrice').textContent = price;
+      
+      // Update selected package
+      selectedPackage = packageType;
+      
+      // Scroll to form
+      setTimeout(() => {
+        document.getElementById('contactForm').scrollIntoView({ 
+          behavior: 'smooth'
+        });
+      }, 300);
+    }
+    
+    function getPackageName(packageType) {
+      switch(packageType) {
+        case 'basic': return 'Paketa Bazë';
+        case 'standard': return 'Paketa Standard';
+        case 'premium': return 'Paketa Premium';
+        default: return '';
+      }
     }
   </script>
 </body>
