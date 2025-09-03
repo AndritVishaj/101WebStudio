@@ -586,6 +586,7 @@
                 <ul class="nav-links">
                     <li><a href="#home" class="active" data-key="nav.home">Home</a></li>
                     <li><a href="#services" data-key="nav.services">Services</a></li>
+                    <li><a href="#portfolio" data-key="nav.projects">Projects</a></li>
                     <li><a href="#contact" data-key="nav.contact">Contact</a></li>
                     <div class="language-switcher">
                         <button class="active" data-lang="en">EN</button>
@@ -679,8 +680,8 @@
         </div>
     </section>
 
-     <!-- Add this section right after the services section in your HTML -->
-<section class="portfolio-carousel">
+     <!-- Portfolio Section -->
+<section class="portfolio-carousel" id="portfolio">
     <div class="container">
         <div class="section-title">
             <h2 data-key="portfolio.title">Our Portfolio</h2>
@@ -798,6 +799,7 @@
                 <ul class="footer-links">
                     <li><a href="#home" data-key="footer.home">Home</a></li>
                     <li><a href="#services" data-key="footer.services">Services</a></li>
+                    <li><a href="#portfolio" data-key="footer.projects">Projects</a></li>
                     <li><a href="#contact" data-key="footer.contact">Contact</a></li>
                 </ul>
                 
@@ -843,6 +845,7 @@
             en: {
                 "nav.home": "Home",
                 "nav.services": "Services",
+                "nav.projects": "Projects",
                 "nav.contact": "Contact",
                 "hero.title": "Transform Your Digital Presence",
                 "hero.description": "We are a <span class='highlight'>creative company</span> that specializes in building <span class='highlight'>responsive websites</span>, crafting beautiful <span class='highlight'>UI/UX designs</span>, and delivering exceptional digital experiences that captivate your audience.",
@@ -862,20 +865,23 @@
                 "services.5.description": "Lightning-fast websites that load quickly and provide seamless user experience.",
                 "services.6.title": "E-Commerce Solutions",
                 "services.6.description": "Custom online stores designed to maximize conversions and sales.",
+                "portfolio.title": "Our Portfolio",
+                "portfolio.subtitle": "Explore our recent projects that showcase our expertise and creativity",
                 "contact.title": "Get In Touch",
                 "contact.subtitle": "Have a project in mind or want to learn more about our services? Reach out to us through any of these channels.",
                 "contact.whatsapp": "WhatsApp",
                 "contact.email": "Email",
                 "contact.instagram": "Instagram",
-                "hero.button.1": "Start Your Website",
                 "footer.home": "Home",
                 "footer.services": "Services",
+                "footer.projects": "Projects",
                 "footer.contact": "Contact",
                 "footer.copyright": "&copy; 2023 101WebStudio. All Rights Reserved."
             },
             sq: {
                 "nav.home": "Kryefaqja",
                 "nav.services": "Shërbimet",
+                "nav.projects": "Projektet",
                 "nav.contact": "Kontakti",
                 "hero.title": "Transformoni Pranimin Tuaj Dixhital",
                 "hero.description": "Ne jemi një <span class='highlight'>kompani kreative</span> e specializuar në ndërtimin e <span class='highlight'>faqeve internetive responsive</span>, dizajnimin e <span class='highlight'>UI/UX</span> të bukura, dhe ofrimin e përvojave dixhitale të jashtëzakonshme që kapin vëmendjen e audiencës tuaj.",
@@ -895,6 +901,8 @@
                 "services.5.description": "Faqe internetive shpejtësi të rrufeshëm që ngarkohen shpejt dhe ofrojnë përvojë të qetë për përdoruesit.",
                 "services.6.title": "Zgjidhje për E-Commerce",
                 "services.6.description": "Dyqane online të personalizuara të dizajnuara për të maksimizuar konversionet dhe shitjet.",
+                "portfolio.title": "Portofoli Ynë",
+                "portfolio.subtitle": "Eksploroni projektet tona të fundit që tregojnë ekspertizën dhe kreativitetin tonë",
                 "contact.title": "Na Kontaktoni",
                 "contact.subtitle": "Keni një projekt në mendje ose dëshironi të mësoni më shumë për shërbimet tona? Na kontaktoni përmes ndonjërit prej këtyre kanaleve.",
                 "contact.whatsapp": "WhatsApp",
@@ -902,6 +910,7 @@
                 "contact.instagram": "Instagram",
                 "footer.home": "Kryefaqja",
                 "footer.services": "Shërbimet",
+                "footer.projects": "Projektet",
                 "footer.contact": "Kontakti",
                 "footer.copyright": "&copy; 2023 101WebStudio. Të Gjitha të Drejtat e Rezervuara."
             }
@@ -1085,15 +1094,6 @@
             currentPosition = cardWidth * currentIndex;
             updateCarousel();
         });
-        
-        // Add translations for the portfolio section
-        if (translations) {
-            translations.en["portfolio.title"] = "Our Portfolio";
-            translations.en["portfolio.subtitle"] = "Explore our recent projects that showcase our expertise and creativity";
-            
-            translations.sq["portfolio.title"] = "Portofoli Ynë";
-            translations.sq["portfolio.subtitle"] = "Eksploroni projektet tona të fundit që tregojnë ekspertizën dhe kreativitetin tonë";
-        }
     });
     </script>
 </body>
